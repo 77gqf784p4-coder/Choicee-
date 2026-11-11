@@ -1,0 +1,125 @@
+name: Brand Ambassador Registration
+description: Apply to join the Brand Ambassador Program
+title: "[Ambassador Application]: "
+labels: ["ambassador-registration"]
+body:
+  - type: markdown
+    attributes:
+      value: "### Section 1: Personal & Contact Details"
+
+  - type: input
+    id: full_name
+    attributes:
+      label: Full Name
+      placeholder: "e.g., Jane Doe"
+    validations:
+      required: true
+
+  - type: input
+    id: country
+    attributes:
+      label: Country of Residence
+      placeholder: "e.g., Rwanda"
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Email Address
+      placeholder: "name@example.com"
+    validations:
+      required: true
+
+  - type: input
+    id: whatsapp
+    attributes:
+      label: WhatsApp Number (Include country code)
+      placeholder: "+250 7XX XXX XXX"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "--- \n### Section 2: Social Media & Promotional Platforms"
+
+  - type: textarea
+    id: social_profiles
+    attributes:
+      label: Social Media Profiles
+      description: Provide handles or full URLs for your active profiles.
+      value: |
+        - **Instagram:** @
+        - **TikTok:** @
+        - **LinkedIn / Facebook:** 
+        - **YouTube / X / Other:** 
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: preferred_platforms
+    attributes:
+      label: Preferred Promotional Platforms
+      description: Select all platforms where you plan to promote.
+      options:
+        - label: Instagram
+        - label: TikTok
+        - label: WhatsApp (Status / Groups)
+        - label: YouTube
+        - label: Facebook
+        - label: LinkedIn
+        - label: In-Person / Community Events
+
+  - type: markdown
+    attributes:
+      value: "--- \n### Section 3: Relevant Experience"
+
+  - type: textarea
+    id: experience
+    attributes:
+      label: Relevant Experience
+      description: Briefly describe any past brand ambassador roles, content creation, community leadership, or sales experience.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Section 4: Referral & Payment Details (Complete Only When Applicable)
+        > ⚠️ **Security Note:** If this is a public repository, leave sensitive payment numbers blank here and submit them privately once accepted.
+
+  - type: dropdown
+    id: payout_method
+    attributes:
+      label: Preferred Payout Method
+      options:
+        - Not Applicable at This Time
+        - Mobile Money (MTN MoMo / Airtel Money / M-Pesa)
+        - Bank Transfer
+        - PayPal / Wise
+      default: 0
+
+  - type: textarea
+    id: payment_details
+    attributes:
+      label: Referral & Payment Details (Private Repos Only)
+      description: Provide Account Holder Name, Account/Mobile Money Number, and Bank/Network Name if submitting privately.
+      placeholder: "Leave blank on public repositories."
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Section 5: Privacy Notice & Consent
+        **Privacy Notice:** We collect your personal, contact, social media, and payment details strictly to evaluate your application, manage your participation in our Brand Ambassador Program, track referrals, and process applicable rewards. Your information is stored securely with restricted access and is never sold or shared with unauthorized third parties.
+
+  - type: checkboxes
+    id: consents
+    attributes:
+      label: Data & Profile Consents
+      options:
+        - label: "**Mandatory:** I have read the Privacy Notice and consent to the collection and processing of my personal data for managing my Brand Ambassador registration and participation."
+          required: true
+        - label: "**Optional Public Profile Feature:** I separately consent to having my name, photo, and social media handles featured publicly on the brand's website, social media channels, and promotional campaigns."
+          required: false
