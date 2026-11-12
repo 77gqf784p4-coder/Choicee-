@@ -43,19 +43,28 @@
       margin-top: 15px;
       color: #374151;
     }
-    button {
+    .whatsapp-btn {
+      display: block;
       width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
       background-color: #25D366;
       color: white;
       font-weight: bold;
       font-size: 1rem;
       padding: 14px;
-      border: none;
       border-radius: 8px;
       margin-top: 24px;
-      cursor: pointer;
     }
-    button:hover { background-color: #1ebe5d; }
+    .whatsapp-btn:hover { background-color: #1ebe5d; }
+    #errorMsg {
+      color: #dc2626;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 12px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -63,23 +72,23 @@
     <h1>Kala Travel Brand Ambassador Registration</h1>
     <p class="subtitle">Complete this form to send your application directly to Kala Travel via WhatsApp.</p>
 
-    <form id="ambassadorForm">
+    <div id="ambassadorForm">
       <h3>1. Personal & Contact Details</h3>
       <label>Full Name *</label>
-      <input type="text" id="fullName" required placeholder="e.g., Jane Doe" />
+      <input type="text" id="fullName" placeholder="e.g., Jane Doe" />
 
       <label>Country of Residence *</label>
-      <input type="text" id="country" required placeholder="e.g., Liberia" />
+      <input type="text" id="country" placeholder="e.g., Liberia" />
 
       <label>Email Address *</label>
-      <input type="email" id="email" required placeholder="name@example.com" />
+      <input type="email" id="email" placeholder="name@example.com" />
 
       <label>WhatsApp Number (with country code) *</label>
-      <input type="tel" id="whatsapp" required placeholder="+231 88 XXX XXXX" />
+      <input type="tel" id="whatsapp" placeholder="+231 88 XXX XXXX" />
 
       <h3>2. Social Media & Promotional Platforms</h3>
       <label>Social Media Profiles (Links or Handles) *</label>
-      <textarea id="socials" rows="3" required placeholder="Instagram: @username&#10;TikTok: @username&#10;LinkedIn/Facebook: ..."></textarea>
+      <textarea id="socials" rows="3" placeholder="Instagram: @username&#10;TikTok: @username&#10;LinkedIn/Facebook: ..."></textarea>
 
       <label>Preferred Promotional Platforms</label>
       <div class="checkbox-group">
@@ -94,7 +103,7 @@
 
       <h3>3. Relevant Experience</h3>
       <label>Briefly describe your relevant experience *</label>
-      <textarea id="experience" rows="3" required placeholder="Past ambassador roles, travel promotion, content creation, or community leadership..."></textarea>
+      <textarea id="experience" rows="3" placeholder="Past ambassador roles, travel promotion, content creation, or community leadership..."></textarea>
 
       <h3>4. Referral & Payment Details (When Applicable)</h3>
       <label>Preferred Payout Method</label>
@@ -115,7 +124,7 @@
 
       <div class="checkbox-group">
         <label>
-          <input type="checkbox" id="mandatoryConsent" required>
+          <input type="checkbox" id="mandatoryConsent">
           <span><strong>Mandatory:</strong> I have read the Privacy Notice and consent to Kala Travel processing my personal data for managing my Brand Ambassador registration. *</span>
         </label>
         <label>
@@ -124,14 +133,17 @@
         </label>
       </div>
 
-      <button type="submit">📲 Send Application via WhatsApp</button>
-    </form>
+      <div id="errorMsg">Please fill in all required (*) fields and check the Mandatory Privacy Consent box before sending.</div>
+
+      <a href="#" id="sendBtn" class="whatsapp-btn">📲 Send Application via WhatsApp</a>
+    </div>
   </div>
 
   <script>
-    document.getElementById("ambassadorForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    const sendBtn = document.getElementById("sendBtn");
+    const errorMsg = document.getElementById("errorMsg");
 
+    function updateWhatsAppLink() {
       const fullName = document.getElementById("fullName").value.trim();
       const country = document.getElementById("country").value.trim();
       const email = document.getElementById("email").value.trim();
@@ -159,7 +171,28 @@
         "*Privacy Consent:* Agreed\n" +
         "*Public Profile Consent:* " + publicConsent;
 
-      window.location.href = "https://wa.me" + encodeURIComponent(message);
+      sendBtn.href = "https://whatsapp.com" + encodeURIComponent(message);
+    }
+
+    document.getElementById("ambassadorForm").addEventListener("input", updateWhatsAppLink);
+    document.getElementById("ambassadorForm").addEventListener("change", updateWhatsAppLink);
+
+    sendBtn.addEventListener("click", function(e) {
+      const fullName = document.getElementById("fullName").value.trim();
+      const country = document.getElementById("country").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+      const socials = document.getElementById("socials").value.trim();
+      const experience = document.getElementById("experience").value.trim();
+      const mandatoryConsent = document.getElementById("mandatoryConsent").checked;
+
+      if (!fullName || !country || !email || !whatsapp || !socials || !experience || !mandatoryConsent) {
+        e.preventDefault();
+        errorMsg.style.display = "block";
+      } else {
+        errorMsg.style.display = "none";
+        updateWhatsAppLink();
+      }
     });
   </script>
 </body>
