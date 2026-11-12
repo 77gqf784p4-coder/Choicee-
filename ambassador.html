@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choicee Brand Ambassador Registration</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f4f6f8;
+      color: #1f2937;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 5px; color: #111827; }
+    p.subtitle { color: #6b7280; font-size: 0.9rem; margin-bottom: 20px; }
+    h3 { font-size: 1.05rem; margin-top: 22px; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
+    label { display: block; font-weight: 600; margin-top: 12px; font-size: 0.9rem; }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    .checkbox-group { margin-top: 8px; }
+    .checkbox-group label { font-weight: 400; display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; }
+    .privacy-box {
+      background: #f9fafb;
+      border-left: 4px solid #25D366;
+      padding: 12px;
+      font-size: 0.85rem;
+      margin-top: 15px;
+      color: #374151;
+    }
+    button {
+      width: 100%;
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 24px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #1ebe5d; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Brand Ambassador Registration</h1>
+    <p class="subtitle">Complete this form to send your application directly to our team via WhatsApp.</p>
+
+    <form id="ambassadorForm">
+      <h3>1. Personal & Contact Details</h3>
+      <label>Full Name *</label>
+      <input type="text" id="fullName" required placeholder="e.g., Jane Doe" />
+
+      <label>Country of Residence *</label>
+      <input type="text" id="country" required placeholder="e.g., Liberia" />
+
+      <label>Email Address *</label>
+      <input type="email" id="email" required placeholder="name@example.com" />
+
+      <label>WhatsApp Number (with country code) *</label>
+      <input type="tel" id="whatsapp" required placeholder="+231 88 XXX XXXX" />
+
+      <h3>2. Social Media & Promotional Platforms</h3>
+      <label>Social Media Profiles (Links or Handles) *</label>
+      <textarea id="socials" rows="3" required placeholder="Instagram: @username&#10;TikTok: @username&#10;LinkedIn/Facebook: ..."></textarea>
+
+      <label>Preferred Promotional Platforms</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="platform" value="Instagram"> Instagram</label>
+        <label><input type="checkbox" name="platform" value="TikTok"> TikTok</label>
+        <label><input type="checkbox" name="platform" value="WhatsApp"> WhatsApp (Status / Groups)</label>
+        <label><input type="checkbox" name="platform" value="YouTube"> YouTube</label>
+        <label><input type="checkbox" name="platform" value="Facebook"> Facebook</label>
+        <label><input type="checkbox" name="platform" value="LinkedIn"> LinkedIn</label>
+        <label><input type="checkbox" name="platform" value="In-Person Events"> In-Person / Community Events</label>
+      </div>
+
+      <h3>3. Relevant Experience</h3>
+      <label>Briefly describe your relevant experience *</label>
+      <textarea id="experience" rows="3" required placeholder="Past ambassador roles, content creation, community leadership, or sales experience..."></textarea>
+
+      <h3>4. Referral & Payment Details (When Applicable)</h3>
+      <label>Preferred Payout Method</label>
+      <select id="payoutMethod">
+        <option value="Not Applicable Yet">Not Applicable at This Time</option>
+        <option value="Mobile Money (Lonestar Cell MTN / Orange Money)">Mobile Money (Lonestar Cell MTN / Orange Money)</option>
+        <option value="Bank Transfer">Bank Transfer</option>
+        <option value="PayPal / Wise">PayPal / Wise</option>
+      </select>
+
+      <label>Account / Mobile Money Details (Optional)</label>
+      <input type="text" id="paymentDetails" placeholder="Account Holder Name, Number & Bank/Network" />
+
+      <h3>5. Privacy Notice & Consents</h3>
+      <div class="privacy-box">
+        <strong>Privacy Notice:</strong> We collect your personal, contact, social media, and payment details strictly to evaluate your application, manage your participation in our Brand Ambassador Program, track referrals, and process applicable rewards. Your information is stored securely with restricted access and is never sold or shared with unauthorized third parties.
+      </div>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" id="mandatoryConsent" required>
+          <span><strong>Mandatory:</strong> I have read the Privacy Notice and consent to the processing of my personal data for managing my Brand Ambassador registration. *</span>
+        </label>
+        <label>
+          <input type="checkbox" id="publicConsent">
+          <span><strong>Optional Public Profile Feature:</strong> I consent to having my name, photo, and social media handles featured publicly on the brand's website and social media channels.</span>
+        </label>
+      </div>
+
+      <button type="submit">📲 Send Application via WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("ambassadorForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const yourWhatsAppNumber = "231887455714";
+
+      const fullName = document.getElementById("fullName").value.trim();
+      const country = document.getElementById("country").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+      const socials = document.getElementById("socials").value.trim();
+      const experience = document.getElementById("experience").value.trim();
+      const payoutMethod = document.getElementById("payoutMethod").value;
+      const paymentDetails = document.getElementById("paymentDetails").value.trim() || "N/A";
+      const publicConsent = document.getElementById("publicConsent").checked ? "Yes" : "No";
+
+      const selectedPlatforms = Array.from(document.querySelectorAll('input[name="platform"]:checked'))
+        .map(cb => cb.value)
+        .join(", ") || "None selected";
+
+      const message = `*NEW BRAND AMBASSADOR REGISTRATION*\n\n` +
+        `*Full Name:* ${fullName}\n` +
+        `*Country:* ${country}\n` +
+        `*Email:* ${email}\n` +
+        `*WhatsApp:* ${whatsapp}\n\n` +
+        `*Social Media Profiles:*\n${socials}\n\n` +
+        `*Preferred Platforms:* ${selectedPlatforms}\n\n` +
+        `*Relevant Experience:*\n${experience}\n\n` +
+        `*Payout Method:* ${payoutMethod}\n` +
+        `*Payment Details:* ${paymentDetails}\n\n` +
+        `*Privacy Consent:* Agreed\n` +
+        `*Public Profile Consent:* ${publicConsent}`;
+
+      const whatsappURL = `https://wa.me{yourWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, "_blank");
+    });
+  </script>
+</body>
+</html>
