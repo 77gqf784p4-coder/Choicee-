@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kala Brand Ambassador Registration</title>
+  <title>Kala Travel Brand Ambassador Registration</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -60,8 +60,8 @@
 </head>
 <body>
   <div class="container">
-    <h1>Brand Ambassador Registration</h1>
-    <p class="subtitle">Complete this form to send your application directly to our team via WhatsApp.</p>
+    <h1>Kala Travel Brand Ambassador Registration</h1>
+    <p class="subtitle">Complete this form to send your application directly to Kala Travel via WhatsApp.</p>
 
     <form id="ambassadorForm">
       <h3>1. Personal & Contact Details</h3>
@@ -94,7 +94,7 @@
 
       <h3>3. Relevant Experience</h3>
       <label>Briefly describe your relevant experience *</label>
-      <textarea id="experience" rows="3" required placeholder="Past ambassador roles, content creation, community leadership, or sales experience..."></textarea>
+      <textarea id="experience" rows="3" required placeholder="Past ambassador roles, travel promotion, content creation, or community leadership..."></textarea>
 
       <h3>4. Referral & Payment Details (When Applicable)</h3>
       <label>Preferred Payout Method</label>
@@ -110,17 +110,17 @@
 
       <h3>5. Privacy Notice & Consents</h3>
       <div class="privacy-box">
-        <strong>Privacy Notice:</strong> We collect your personal, contact, social media, and payment details strictly to evaluate your application, manage your participation in our Brand Ambassador Program, track referrals, and process applicable rewards. Your information is stored securely with restricted access and is never sold or shared with unauthorized third parties.
+        <strong>Privacy Notice:</strong> Kala Travel collects your personal, contact, social media, and payment details strictly to evaluate your application, manage your participation in our Brand Ambassador Program, track referrals, and process applicable rewards. Your information is stored securely with restricted access and is never sold or shared with unauthorized third parties.
       </div>
 
       <div class="checkbox-group">
         <label>
           <input type="checkbox" id="mandatoryConsent" required>
-          <span><strong>Mandatory:</strong> I have read the Privacy Notice and consent to the processing of my personal data for managing my Brand Ambassador registration. *</span>
+          <span><strong>Mandatory:</strong> I have read the Privacy Notice and consent to Kala Travel processing my personal data for managing my Brand Ambassador registration. *</span>
         </label>
         <label>
           <input type="checkbox" id="publicConsent">
-          <span><strong>Optional Public Profile Feature:</strong> I consent to having my name, photo, and social media handles featured publicly on the brand's website and social media channels.</span>
+          <span><strong>Optional Public Profile Feature:</strong> I consent to having my name, photo, and social media handles featured publicly on Kala Travel's website and social media channels.</span>
         </label>
       </div>
 
@@ -131,8 +131,6 @@
   <script>
     document.getElementById("ambassadorForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
-      const yourWhatsAppNumber = "231887455714";
 
       const fullName = document.getElementById("fullName").value.trim();
       const country = document.getElementById("country").value.trim();
@@ -148,23 +146,21 @@
         .map(cb => cb.value)
         .join(", ") || "None selected";
 
-      const message = `*NEW BRAND AMBASSADOR REGISTRATION*\n\n` +
-        `*Full Name:* ${fullName}\n` +
-        `*Country:* ${country}\n` +
-        `*Email:* ${email}\n` +
-        `*WhatsApp:* ${whatsapp}\n\n` +
-        `*Social Media Profiles:*\n${socials}\n\n` +
-        `*Preferred Platforms:* ${selectedPlatforms}\n\n` +
-        `*Relevant Experience:*\n${experience}\n\n` +
-        `*Payout Method:* ${payoutMethod}\n` +
-        `*Payment Details:* ${paymentDetails}\n\n` +
-        `*Privacy Consent:* Agreed\n` +
-        `*Public Profile Consent:* ${publicConsent}`;
+      const message = "*NEW KALA TRAVEL BRAND AMBASSADOR REGISTRATION*\n\n" +
+        "*Full Name:* " + fullName + "\n" +
+        "*Country:* " + country + "\n" +
+        "*Email:* " + email + "\n" +
+        "*WhatsApp:* " + whatsapp + "\n\n" +
+        "*Social Media Profiles:*\n" + socials + "\n\n" +
+        "*Preferred Platforms:* " + selectedPlatforms + "\n\n" +
+        "*Relevant Experience:*\n" + experience + "\n\n" +
+        "*Payout Method:* " + payoutMethod + "\n" +
+        "*Payment Details:* " + paymentDetails + "\n\n" +
+        "*Privacy Consent:* Agreed\n" +
+        "*Public Profile Consent:* " + publicConsent;
 
-      const whatsappURL = "https://wa.me" + encodeURIComponent(message);
-      window.open(whatsappURL, "_blank");
+      window.location.href = "https://wa.me" + encodeURIComponent(message);
     });
   </script>
 </body>
 </html>
-
